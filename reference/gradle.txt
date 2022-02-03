@@ -1,0 +1,16 @@
+# Gradle Task 실행순서 : clean > build > bootJar
+# jar 파일 경로 : build > libs > demo-0.0.1-SNAPSHOT.jar
+
+
+
+# kafka Prerequisite 
+# kafka, zookeeper 이미지 내려받기 docker pull bitnami/kafka3, docker pull bitnami/zookeeper3.7
+# 해당 PJT 위치 (./demo)에 대해 docker-compose.yml 작성 후, docker-compose up -d 실행
+# docker ps 를 통해 두 개의 프로세스가 Up 상태로 올라왔는지 확인
+# 내부 IP (로컬) 에 대해서는 kafka 포트는 9092, 외부 IP 에 대해서는 9093 으로 포트포워딩
+# docker exec -it 'kafka 프로세스 이름' /bin/bash 실행하여 kafka 서버 접속 (여기서는 demo_kafka_1)
+# topic 생성 kafka-topics.sh --bootstrap-server localhost:9093 --create --topic first_topic --partitions 3 --replication-factor 1
+# 최초 consumer 접속 시, consumer-group 생성 kafka-console-consumer.sh --bootstrap-server localhost:9093 --topic first_topic --group first_group
+# 정확한 partition 및 offset 체크를 위해, 접속한 consumer 는 접속 off
+# boot application 을 구동시켜, 토픽 생성 시 정의한 partition 수만큼 assign 되었는지 로그 확인 [ntainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : first_group: partitions assigned: [first_topic-0, first_topic-1, first_topic-2]
+

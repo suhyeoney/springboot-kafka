@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"name": "demo",
+			"path": "../../.."
+		},
+		{
+			"path": "../../../../react-app"
+		}
+	],
+	"settings": {
+		"java.configuration.updateBuildConfiguration": "automatic"
+	}
+}

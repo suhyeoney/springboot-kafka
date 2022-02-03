@@ -1,0 +1,24 @@
+server:
+  port: 8081
+  servlet:
+    context-path: /api
+
+spring:
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9093
+      group-id: first_group
+      auto-offset-reset: earliest
+      enable-auto-commit: true
+      auto-commit-interval: 5000ms
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      bootstrap-servers: localhost:9093
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+  datasource:
+    username: root
+    password: password1004!
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/rail?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&useSSL=false
